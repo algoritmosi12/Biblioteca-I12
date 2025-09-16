@@ -1,7 +1,7 @@
 const usuarios = [
     {
-        "codigo" : codigoUsuario, // primary key // integer (12)
-        "dni" : dniUsuario, // integer (8)
+        "codigo" : codigoUsuario, // autoincrement primary key // integer (12)
+        "dni" : dniUsuario, // string (8)
         "nombreYApellido" : nombreYApellidoUsuario, // string (50)
         "email" : emailUsuario, // string (40)
         "cargo" : cargoUsuario, // string (15)
@@ -12,7 +12,7 @@ const usuarios = [
 
 const insumo = [
     {
-        "codigo" : codigoInsumo, // primary key // integer (12)
+        "codigo" : codigoInsumo, // autoincrement // primary key // integer (12)
         "familia" : familiaInsumo,  // string (50)
         "nombre" : nombreInsumo, // string (50)
         "estado" : estadoInsumo, // string (12)
@@ -23,7 +23,7 @@ const insumo = [
 
 const prestamo = [
     {
-        "codigo" : codigoPrestamo, // primary key // integer (12)
+        "codigo" : codigoPrestamo, // autoincrement // primary key // integer (12)
         "fecha" : fechaPrestamo, // date
         "insumo" : codigoInsumo, // integer (12)
         "cantidad" : cantidadPrestamo, // integer (5)
@@ -34,7 +34,7 @@ const prestamo = [
 
 const destinatario = [
     {
-        "codigo" : codigoDestinatario, // primary key // integer (12)
+        "codigo" : codigoDestinatario, // autoincrement // primary key // integer (12)
         "nombreYApellido" : nombreYApellidoDestinatario, // // string (50)
         "cargo" : cargoDestinatario // string (15)
     }
