@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SISTEMA DE GESTION DE PRESTAMOS DE INSUMOS</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container border mt-3 pb-3">
+        <div class="row text-center">
+            <div class="col-2 border py-2 fw-bold"><a href="panel.html" class="text-decoration-none text-reset"> I.S.F.T.N°12</a></div>
+            <div class="col-8 border py-2">GESTION DE PRESTAMOS DE INSUMOS | PANEL DE CONTROL </div>
+            <div class="col-2 border py-2"> <img src="images/icon.webp" width="20px" height="20px"> USUARIO </div>
+        </div>
+        <div class="container d-flex align-items-center gap-3 border">
+            <div class="col-1 py-2 fw-bold ml-4"> 
+                <label class="fw-bold me-2"></label>
+                <select class="form-select border-dark d-inline-block" id="prestamo" style="width: auto;">
+                    <option selected disabled>PRESTAMOS</option>
+                    <option value="prestamos/nuevoPrestamo.html">Nuevo Préstamo</option>
+                    <option value="prestamos/activos.html">Activos</option>
+                    <option value="prestamos/historial.html">Historial</option>
+                    <option value="prestamos/morosos.html">Morosos</option>
+                    <option value="prestamos/verPrestamos.html">Ver Prestamos</option>
+                </select>
+            </div>
+            <div class="col-1 py-2 fw-bold ">
+                <label class="fw-bold me-2"></label>
+                    <select class="form-select border-dark d-inline-block" id="insumo" style="width: auto;">
+                        <option selected disabled>INSUMOS</option>
+                        <option value="insumos/nuevoinsumo.html">Nuevo Insumo</option>
+                        <option value="insumos/stockinsumo.html">Stock</option>
+                        <option value="insumos/bajainsumo.html">Baja Insumo</option>
+                        <option value="insumos/verInsumos.html">Ver Insumos</option>
+                    </select>
+            </div>
+            <div class="col-1 py-2 fw-bold ">
+                <label class="fw-bold me-2"></label>
+                    <select class="form-select border-dark d-inline-block" id="usuario" style="width: auto;">
+                        <option selected disabled>USUARIOS</option>
+                        <option value="usuarios/altaUser.html">Alta Usuario</option>
+                        <option value="usuarios/bajaUser.html">Baja Usuario</option>
+                        <option value="usuarios/verUser.html">Ver Usuarios</option>
+                    </select>
+            </div>
+            <div class="col-1 py-2 fw-bold"> </div>
+            <div class="col-1 py-2 fw-bold"> </div>
+            <div class="col-1 py-2 fw-bold"> </div>
+        </div>
+        
+     
+
+
+
+    </div>
+    <script type="module" src="panel.js"></script>
+</body>
+
+</html>
