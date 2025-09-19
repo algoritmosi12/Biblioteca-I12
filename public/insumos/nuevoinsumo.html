@@ -1,13 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Alta de Insumo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
 </head>
-<body>
+<body class="bg-light">
 
-    <h1>Nuevo Insumo</h1>
-    
+
+
+
+<div class="container border mt-3 pb-3">
+        <div class="row text-center">
+            <div class="col-2 border py-2 fw-bold"><a href="../redireccionar.html" class="text-decoration-none text-reset"> I.S.F.T.N°12</a></div>
+            <div class="col-8 border py-2">NUEVO INSUMO </div>
+
+        </div>
+
+                
+
+
+
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="card shadow p-4" style="width: 400px;">
+    <h4 class="text-center mb-4">ALTA DE INSUMO</h4>
+
+    <form action="" method="post" id="registroInsumo">
+      <div class="mb-3">
+        <label class="form-label fw-bold">NOMBRE</label>
+        <input type="text" id="nombre" class="form-control" name="nombre" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">CATEGORÍA</label>
+        <select class="form-select" id="categoria" name="categoria" required>
+          <option value="">Seleccionar</option>
+          <option value="tecnologia">Tecnología</option>
+          <option value="bibliografia">Bibliografía</option>
+          <option value="electrico">Eléctrico</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">MATERIA</label>
+        <select class="form-select" id="materia" name="materia" required>
+          <option value="">Seleccionar</option>
+          <option value="analisis_sistemas">Análisis de Sistemas</option>
+          <option value="seguridad_higiene">Seguridad e Higiene</option>
+          <option value="teoria_cosas">Teoría de las Cosas</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">CANTIDAD</label>
+        <input type="number" class="form-control" id="cantidad" name="cantidad" min="1" required>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">ESTADO</label>
+        <select class="form-select" id="estado" name="estado" required>
+          <option value="">Seleccionar</option>
+          <option value="nuevo">Nuevo</option>
+          <option value="usado_nuevo">Usado como nuevo</option>
+          <option value="usado">Usado</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label fw-bold">OBSERVACIÓN</label>
+        <input type="text" class="form-control" id="observacion" name="observacion" placeholder="Escribí tus comentarios acá...">
+      </div>
+
+             <div id="mensaje"></div>
+
+
+      <div class="d-grid gap-2">
+        <button type="submit" class="btn btn-primary">GUARDAR INSUMO</button>
+        <button type="reset" class="btn btn-secondary">CANCELAR</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<script src="nuevoInsumo.js" type="module"></script>
 </body>
 </html>
