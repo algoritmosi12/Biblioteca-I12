@@ -19,7 +19,7 @@ formulario.addEventListener("submit", (e) => {
    
     for (i = 0; i < bd.length; i++) {
         if (bd[i].userSystem === user && bd[i].passwordSystem === password) {
-            window.location.href = "redireccionar.html";
+            window.location.href = "home.html";
             break
         }
         else {
