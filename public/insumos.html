@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="insumos.js" defer></script>
+    <!-- El atributo defer significa que el navegador descarga el script mientras carga el HTML, pero lo ejecuta recién cuando todo el HTML esté listo CONSULTAR -->
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -16,6 +17,12 @@
                 <img src="multimedia/logo.png" alt="Logo" class="d-inline-block align-text-top me-2" style="height: 40px;">
                 Gestión de insumos
             </a>
+
+            <!-- boton que dijo el profe para el navbar responsive --> 
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item"><a class="nav-link" href="home.html" id="linkInicio">Inicio</a></li>
@@ -89,8 +96,36 @@
                     </tr>
                 </thead>
                 <tbody>
+                     <!-- Ejemplo de insumo cargado -->
                     <tr>
-                        
+                        <td>001</td>
+                        <td>Zapatilla</td>
+                        <td>Eléctrico</td>
+                        <td>Depósito A</td>
+                        <td>4</td>
+                        <td>En condiciones</td>
+                        <td>Funciona correctamente</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-danger">
+                        🗑️
+                        <!--Despues le agregamos el icono :) -->
+                            </button>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td>005</td>
+                        <td>HDMI</td>
+                        <td>Cable</td>
+                        <td>Biblioteca</td>
+                        <td>8</td>
+                        <td>En reparación</td>
+                        <td>Faltan algunos</td>
+                        <td class="text-center">
+                            <button class="btn btn-sm btn-outline-danger">
+                        🗑️
+                            </button>
+                        </td>
                     </tr>
                 </tbody>
             </table>
