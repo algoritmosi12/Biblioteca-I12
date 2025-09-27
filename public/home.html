@@ -1,111 +1,234 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestión de Insumos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
     <script src="home.js" defer></script>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <div class="container-fluid">
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="multimedia/logo.png" alt="Logo" class="d-inline-block align-text-top me-2" style="height: 40px;">
-                Gestión de insumos
-            </a>
-            <!-- boton que dijo el profe para el navbar responsive --> 
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a class="nav-link" href="home.html" id="linkInicio">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="insumos.html" id="linkInsumos">Insumos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="linkPrestamos">Préstamos</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#" id="linkUsuarios">salir</a></li>
-                </ul>
-            </div>
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="multimedia/logo.png"
+            alt="Logo"
+            class="d-inline-block align-text-top me-2"
+            style="height: 40px"
+          />
+          Gestión de insumos
+        </a>
+        <!-- boton que dijo el profe para el navbar responsive -->
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="home.html" id="linkInicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="insumos.html" id="linkInsumos"
+                >Insumos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="linkPrestamos">Préstamos</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="linkUsuarios">salir</a>
+            </li>
+          </ul>
         </div>
+      </div>
     </nav>
 
     <div class="container mt-4">
-        <div class="row text-center mb-4">
-            <div class="col-md-3">
-                <div class="card p-3">
-                    <h5 class="card-title text-muted">Total de insumos</h5>
-                    <h2 class="card-text fw-bold" id="totalInsumos">0</h2>
-                    <p class="text-muted"><small>insumos disponibles</small></p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card p-3">
-                    <h5 class="card-title text-muted">Insumos prestados actualmente</h5>
-                    <h2 class="card-text fw-bold" id="insumosPrestados">0</h2>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card p-3">
-                    <h5 class="card-title text-muted">Insumos en reparación o fuera de servicio</h5>
-                    <h2 class="card-text fw-bold" id="insumosReparacion">0</h2>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card p-3">
-                    <h5 class="card-title text-muted">Usuarios con préstamos activos</h5>
-                    <h2 class="card-text fw-bold" id="usuariosActivos">0</h2>
-                </div>
-            </div>
+      <div class="row text-center mb-4">
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5 class="card-title text-muted">Total de insumos</h5>
+            <h2 class="card-text fw-bold" id="totalInsumos">0</h2>
+            <p class="text-muted"><small>insumos disponibles</small></p>
+          </div>
         </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5 class="card-title text-muted">Insumos prestados actualmente</h5>
+            <h2 class="card-text fw-bold" id="insumosPrestados">0</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5 class="card-title text-muted">
+              Insumos en reparación o fuera de servicio
+            </h5>
+            <h2 class="card-text fw-bold" id="insumosReparacion">0</h2>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card p-3">
+            <h5 class="card-title text-muted">
+              Usuarios con préstamos activos
+            </h5>
+            <h2 class="card-text fw-bold" id="usuariosActivos">0</h2>
+          </div>
+        </div>
+      </div>
 
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h3>Listado de insumos</h3>
-            <button class="btn btn-danger" id="btnNuevoPrestamo">Nuevo préstamo</button>
-        </div>
+      <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3>Listado de insumos</h3>
+        <button
+          class="btn btn-danger"
+          id="btnNuevoPrestamo"
+          data-bs-toggle="modal"
+          data-bs-target="#modalPrestamo"
+        >
+          Nuevo préstamo
+        </button>
+      </div>
 
-        <div class="row mb-3">
-            <div class="col-md-4">
-                <input type="text" class="form-control" id="inputBuscar" name="buscar" placeholder="Buscar...">
-            </div>
-            <div class="col-md-2">
-                <select class="form-select" id="selectCategoria" name="categoria">
-                    <option selected>Categoría</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <select class="form-select" id="selectEstado" name="estado">
-                    <option selected>Estado</option>
-                    <option value="disponible">Disponible</option>
-                    <option value="prestado">Prestado</option>
-                    <option value="reparacion">En reparación</option>
-                </select>
-            </div>
-            <div class="col-md-2">
-                <select class="form-select" id="selectUbicacion" name="ubicacion">
-                    <option selected>Ubicación</option>
-                </select>
-            </div>
+      <div class="row mb-3">
+        <div class="col-md-4">
+          <input
+            type="text"
+            class="form-control"
+            id="inputBuscar"
+            name="buscar"
+            placeholder="Buscar..."
+          />
         </div>
+        <div class="col-md-2">
+          <select class="form-select" id="selectCategoria" name="categoria">
+            <option selected>Categoría</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select class="form-select" id="selectEstado" name="estado">
+            <option selected>Estado</option>
+            <option value="disponible">Disponible</option>
+            <option value="prestado">Prestado</option>
+            <option value="reparacion">En reparación</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select class="form-select" id="selectUbicacion" name="ubicacion">
+            <option selected>Ubicación</option>
+          </select>
+        </div>
+      </div>
 
-        <div class="table-responsive">
-            <table class="table table-hover">
-                <thead class="table-light">
-                    <tr>
-                        <th scope="col">Nombre del insumo</th>
-                        <th scope="col">Categoría</th>
-                        <th scope="col">Código / Inventario</th>
-                        <th scope="col">Estado</th>
-                        <th scope="col">Ubicación</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody id="listaInsumos"> </tbody>
-            </table>
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="table-light">
+            <tr>
+              <th scope="col">Nombre del insumo</th>
+              <th scope="col">Categoría</th>
+              <th scope="col">Código / Inventario</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Ubicación</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody id="listaInsumos"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal sacado de BOOSTRAP :) Nuevo Préstamo -->
+    <div
+      class="modal fade"
+      id="modalPrestamo"
+      tabindex="-1"
+      aria-labelledby="modalPrestamoLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalPrestamoLabel">
+              <img
+                src="multimedia/logo.png"
+                alt="Logo"
+                class="d-inline-block align-text-top me-2"
+                style="height: 40px"/>
+              Registrar nuevo préstamo
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Cerrar"
+            ></button>
+          </div>
+
+          <div class="modal-body">
+            <form id="formPrestamo">
+              <div class="mb-3">
+                <label for="inputInsumo" class="form-label">Insumo</label>
+                <select class="form-select" id="inputInsumo" required>
+                  <option value="">Seleccionar insumo...</option>
+                </select>
+              </div>
+
+              <div class="mb-3">
+                <label for="inputCantidad" class="form-label">Cantidad</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="inputCantidad"
+                  min="1"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="inputDestinatario" class="form-label"
+                  >Destinatario</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  id="inputDestinatario"
+                  required
+                />
+              </div>
+
+              <div class="mb-3">
+                <label for="inputFechaLimite" class="form-label"
+                  >Fecha límite</label
+                >
+                <input
+                  type="date"
+                  class="form-control"
+                  id="inputFechaLimite"
+                  required
+                />
+              </div>
+
+              <button type="submit" class="btn btn-danger w-100">
+                Guardar préstamo
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+  </body>
 </html>

@@ -6,6 +6,7 @@
     <title>Gestión de Insumos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
     <script src="insumos.js" defer></script>
     <!-- El atributo defer significa que el navegador descarga el script mientras carga el HTML, pero lo ejecuta recién cuando todo el HTML esté listo CONSULTAR -->
@@ -106,10 +107,7 @@
                         <td>En condiciones</td>
                         <td>Funciona correctamente</td>
                         <td class="text-center">
-                            <button class="btn btn-sm btn-outline-danger">
-                        🗑️
-                        <!--Despues le agregamos el icono :) -->
-                            </button>
+                            <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>
                         </td>
                     </tr>
 
@@ -122,9 +120,7 @@
                         <td>En reparación</td>
                         <td>Faltan algunos</td>
                         <td class="text-center">
-                            <button class="btn btn-sm btn-outline-danger">
-                        🗑️
-                            </button>
+                             <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>
                         </td>
                     </tr>
                 </tbody>
