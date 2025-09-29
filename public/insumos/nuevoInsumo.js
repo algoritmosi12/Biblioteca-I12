@@ -1,4 +1,4 @@
-import { guardarElemento, obtenerSiguienteCodigo } from "../bd.js";
+import { guardarElemento, obtenerSiguienteCodigo } from "../base_de_datos/bd.js";
 
 const registroInsumo = document.getElementById("registroInsumo");
 const mensaje = document.getElementById("mensaje");
@@ -14,7 +14,7 @@ registroInsumo.addEventListener("submit", (e) => {
     let observacionregistro = document.getElementById("observacion").value;
     let estadoRegistro = document.getElementById("estado").value;
     
-
+    
     let crearinsumo = {
         "codigo" : obtenerSiguienteCodigo(),
         "nombre": document.getElementById("nombre").value,
@@ -29,10 +29,10 @@ registroInsumo.addEventListener("submit", (e) => {
 
     console.log(crearinsumo);
 
-        if (guardarElemento(crearinsumo)) {
+    if (guardarElemento(crearinsumo)) {
         mensaje.textContent = "Insumo guardado";
          setTimeout(() => {
-    window.location.href = "verInsumos.html";
+    window.location.href = "insumos.html";
   }, 2000);
  
         

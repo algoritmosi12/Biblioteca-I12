@@ -1,15 +1,15 @@
 /// CREAMOS LA BASE DE DATOS ///
-import { guardarElemento } from "../bd.js";
+import { guardarElemento } from "../base_de_datos/bd.js";
 
 
 
 
 
-const registroUsuario = document.getElementById("registroUsuario");
+const registroUsuario = document.getElementById("altaUsuarioForm");
 const repeatPass = document.getElementById("repeatPass");
 const mensaje = document.getElementById("mensaje")
 
-registroUsuario.btn.addEventListener("click", (e) => {
+registroUsuario.addEventListener("submit", (e) => {
     e.preventDefault();
 
     ///  GUARDAMOS TODOS LOS VALORES DEL FORMULARIO EN LAS VARIABLES CORRESPONDIENTES

@@ -2,74 +2,105 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALTA USUARIO</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ALTA USUARIO</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 
 <body>
 
-    <div class="container border mt-3 pb-3">
-        <div class="row text-center">
-            <div class="col-2 border py-2 fw-bold"><a href="../redireccionar.html"
-                    class="text-decoration-none text-reset"> I.S.F.T.N°12</a></div>
-            <div class="col-8 border py-2">GESTION DE PRESTAMOS | ALTA USUARIO</div>
-            <div class="col-2 border py-2"> <img src="../images/icon.webp" width="20px" height="20px"> USUARIO </div>
-        </div>
+ 
+  <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+    <div class="container-fluid">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="../multimedia/logo.png" alt="Logo" class="d-inline-block align-text-top me-2" style="height: 40px" />
+        Instituto Superior de Formación Técnica Nº 12
+      </a>
 
-        <div class="bg-light border mt-4 p-4 mx-auto" style="max-width: 510px;">
-            <form action="" id="registroUsuario">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-
-                <div class="mb-3">
-                    <label for="nombreYApellido" class="form-label fw-bold">APELLIDO Y NOMBRE </label>
-                    <input type="text" class="form-control" id="nombreYApellido" required>
-                </div class="mb-3">
-
-
-                <div class="mb-3">
-                    <label for="dni" class="form-label fw-bold">DNI </label>
-                    <input type="number" class="form-control" id="dni" required>
-                </div class="mb-3">
-
-                <div class="mb-3">
-                    <label form="email" class="form-label fw-bold"> EMAIL </label>
-                    <input type="text" class="form-control" id="email" required>
-                </div class="mb-3">
-
-                <div class="mb-3">
-                    <label class="fw-bold me-2">CARGO</label>
-                    <select class="form-select border-dark d-inline-block" id="cargo" style="width: auto;">
-                        <option selected disabled>seleccionar</option>
-                        <option>Bibliotecario</option>
-                        <option>Secretario</option>
-                        <option>Admin</option>
-                        <option>Otro</option>
-                    </select>
-                </div class="mb-3">
-                <div>
-                    <label for="altaPassword" class="form-label fw-bold"> CONTRASEÑA </label>
-                    <input type="password" class="form-control" id="altaPassword">
-                </div class="mb-3">
-                <div class="mb-3">
-                    <label for="altaPassword2" class="form-label fw-bold"> REPETIR CONTRASEÑA </label>
-                    <input type="password" class="form-control" id="altaPassword2">
-                </div>
-                <div class="text-center mb-3">
-                    <input type="submit" class="text-center fw-bold mb-0 btn btn-primary" id="btn" value="ALTA USUARIO">
-                </div>
-                <div class="text-center mb-3">
-                    <p id="repeatPass"></p>
-                </div>
-                <div id="mensaje"></div>
-            </form>
-        </div>
-
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="../home/home.html" id="linkInicio">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../insumos/insumos.html" id="linkInsumos">Insumos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../prestamos/prestamos.html" id="linkPrestamos">Préstamos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../usuarios/verUser.html" id="linkUsuarios">Usuarios</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" id="linkSalir">Salir</a>
+          </li>
+        </ul>
+      </div>
     </div>
+  </nav>
 
-    <script src="altaUser.js" type="module"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"> </script>
+ 
+  <div class="container mt-4">
+    <h2 class="text-center mb-4">Alta de Usuario</h2>
+
+    <form id="altaUsuarioForm">
+      <div class="mb-3">
+        <label for="nombreYApellido" class="form-label fw-bold">Apellido y Nombre</label>
+        <input type="text" class="form-control" id="nombreYApellido" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="dni" class="form-label fw-bold">DNI</label>
+        <input type="number" class="form-control" id="dni" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="email" class="form-label fw-bold">Email</label>
+        <input type="email" class="form-control" id="email" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="cargo" class="form-label fw-bold">Cargo</label>
+        <select class="form-select border-dark" id="cargo" required>
+          <option selected disabled>Seleccionar</option>
+          <option>Bibliotecario</option>
+          <option>Secretario</option>
+          <option>Admin</option>
+          <option>Otro</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="altaPassword" class="form-label fw-bold">Contraseña</label>
+        <input type="password" class="form-control" id="altaPassword" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="altaPassword2" class="form-label fw-bold">Repetir Contraseña</label>
+        <input type="password" class="form-control" id="altaPassword2" required>
+      </div>
+
+      <div class="text-center mb-3">
+        <button type="submit" class="btn btn-danger">Alta Usuario</button>
+      </div>
+
+      <div class="text-center mb-3">
+        <p id="repeatPass"></p>
+      </div>
+
+      <div id="mensaje"></div>
+    </form>
+  </div>
+
+  <script src="altaUser.js" type="module"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

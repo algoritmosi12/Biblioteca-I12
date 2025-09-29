@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Insumos</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" defer></script>
+    <script src="insumos.js" defer></script>
+    <!-- El atributo defer significa que el navegador descarga el script mientras carga el HTML, pero lo ejecuta recién cuando todo el HTML esté listo CONSULTAR -->
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="../multimedia/logo i12 fondo blanco.png" alt="Logo" class="d-inline-block align-text-top me-2" style="height: 40px;">
+                Instituto Superior de Formación Técnica Nº 12 
+            </a>
+
+            <!-- boton que dijo el profe para el navbar responsive --> 
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link" href="..//home/home.html" id="linkInicio">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="../insumos/insumos.html" id="linkInsumos">Insumos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../prestamos/prestamos.html" id="linkPrestamos">Préstamos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../usuarios/verUser.html" id="linkUsuarios">Usuarios</a>
+                    <li class="nav-item"><a class="nav-link" href="#" id="linkSalir">Salir</a></li>
+                    
+                   
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="text-center mb-4">
+            <h2> INSUMOS - BIBLIOTECA I.S.F.T. N°12</h2>
+        </div>
+
+
+        <div class="d-flex justify-content-end mb-3">
+            <a href="nuevoinsumo.html" class="btn btn-danger"> Alta de Insumo</a>
+         </div>
+
+
+
+        
+        
+<h1>Insumos Cargados </h1>
+        <table class="table table-striped table-hover table-bordered" id="insumosTable">
+            <thead class="table-dark">
+                <tr>
+                     <th>Codigo</th>
+                     <th>Nombre</th>   
+                    <th>categoria</th>
+                    <th> Materia</th>
+                    <th>Cantidad</th>
+                    <th>Estado</th>
+                    <th>Observacion</th>
+                    <th>Accion</th>
+                    
+                </tr>
+
+            </thead>
+            <tbody>
+
+
+                  <tr>
+                        <td>005</td>
+                        <td>HDMI</td>
+                        <td>Cable</td>
+                        <td>biblioteca</td>
+                        <td>2</td>
+                        <td>Reparacion</td>
+                        <td>Hacen falta mas</td>
+                        <td class="text-center">
+                            <i class="bi bi-trash text-danger" style="cursor: pointer;"></i>
+                        </td>
+                    </tr>
+
+
+
+            </tbody>
+        </table>
+                     
+                   
+                       
+              
+
+        <script type="module" src="insumos.js"></script>
+</body>
+
+</html>
+
+</html>
+
+
+
+
+

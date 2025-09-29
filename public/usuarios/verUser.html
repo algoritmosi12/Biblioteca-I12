@@ -11,14 +11,60 @@
 
 <body>
 
+     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+      <div class="container-fluid">
+        <a class="navbar-brand d-flex align-items-center" href="#">
+          <img
+            src="../multimedia/logo.png"
+            alt="Logo"
+            class="d-inline-block align-text-top me-2"
+            style="height: 40px"
+          />
+          Instituto Superior de Formación Técnica Nº 12 
+        </a>
+     
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="container border mt-3 pb-3">
-             <div class="row text-center">
-            <div class="col-2 border py-2 fw-bold"><a href="../redireccionar.html" class="text-decoration-none text-reset"> I.S.F.T.N°12</a></div>
-            <div class="col-8 border py-2">USUARIOS </div>
-
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="../home/home.html" id="linkInicio">Inicio</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../insumos/insumos.html" id="linkInsumos"
+                >Insumos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../prestamos/prestamos.html" id="linkPrestamos">Préstamos</a>
+            </li>
+            
+            
+            <li class="nav-item">
+              <a class="nav-link" href="verUser.html" id="linkUsuarios"
+                >Usuarios</a>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="linkUsuarios">salir</a>
+            </li>
+          </ul>
         </div>
-
+      </div>
+    </nav>
+  
+          <div class="d-flex justify-content-end mb-3">
+            <a href="altaUser.html" class="btn btn-danger"> Alta Usuario</a>
+         </div>
 
 
         <table class="table table-striped table-hover table-bordered" id="usuariosTable">
@@ -32,10 +78,16 @@
                     <th>Accion</th>
                 </tr>
             </thead>
-            <tbody></tbody>
+            <tbody>
+
+            </tbody>
         </table>
         </div>
         <script type="module" src="usuarios.js"></script>
 </body>
 
 </html>
+
+
+
+

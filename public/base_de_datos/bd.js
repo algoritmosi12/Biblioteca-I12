@@ -121,7 +121,7 @@ export function obtenerBD() {
                     "categoria": "Otro",
                     "materia": "otro",
                     "cantidad": "8",
-                    "estado": "Usado",
+                    "estado": "Fuera de Servicio",
                     "observacion": "Faltan ",
                     "active": false,
                     "tipo": "insumo"
@@ -133,33 +133,14 @@ export function obtenerBD() {
                     "categoria": "otro",
                     "materia": "Seguridad e Higiene",
                     "cantidad": "5",
-                    "estado": "Usado",
+                    "estado": "Disponible",
                     "observacion": "Bien ",
                     "active": true,
                     "tipo": "insumo"
                 },
                 // prestamos/
-                {
-                    "codigo": 19,
-                    "fecha": "2025-09-16",
-                    "insumo": 18,
-                    "cantidad": 2,
-                    "destinatario": 20,
-                    "fechaLimite": "2025-09-27",
-                    "active": true,
-                    "tipo": "prestamo"
-                },
-
-                {
-                    "codigo": 15,
-                    "fecha": "2025-09-17",
-                    "insumo": 14,
-                    "cantidad": 1,
-                    "destinatario": 16,
-                    "fechaLimite": "2025-09-28",
-                    "active": true,
-                    "tipo": "prestamo"
-                }
+            
+            
 
             ];
             guardarArray(BBDD); // guardar array inicial

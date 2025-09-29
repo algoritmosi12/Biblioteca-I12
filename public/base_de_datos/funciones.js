@@ -1,7 +1,7 @@
 import { guardarArray } from "./bd.js";
 
 
-export function borrarLogico(posicion, datos) {
+function borrarLogico(posicion, datos) {
             // datos[0] = dame el dato del array en la posicion 0  
             datos[posicion].active = false;
             //actualizar la base de datos despues de borrar logico

@@ -1,5 +1,5 @@
-import { cargarTabla } from "../funciones.js";
-import { obtenerBD, obtenerSiguienteCodigo } from "../bd.js";
+import { cargarTabla } from "..//base_de_datos/funciones.js";
+import { obtenerBD, obtenerSiguienteCodigo } from "../base_de_datos/bd.js";
 
 
 
@@ -8,3 +8,4 @@ const datos = obtenerBD()
 cargarTabla(datos,"usuariosTable", "usuario");
 
 
+console.log(datos);
