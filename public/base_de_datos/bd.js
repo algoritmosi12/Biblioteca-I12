@@ -215,3 +215,17 @@ export function obtenerSiguienteCodigo() {
 }
 
 ///// RIEGEL - ROMAN - SONIA ///// 
+
+const usuario = [
+     {
+        codigo : 1, // autoincrement primary key // integer (12)
+        dni : 1000001, // string (8)
+        nombreYApellido : "admin", // string (50)
+        email : "admin@gmail.com", // string (40)
+        cargo : "admin", // string (15)
+        passwordSystem : "admin", // string (12)
+        active : "active" // string (4)
+     }
+ ];
+
+
