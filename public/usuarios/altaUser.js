@@ -15,11 +15,12 @@ registroUsuario.addEventListener("submit", (e) => {
     ///  GUARDAMOS TODOS LOS VALORES DEL FORMULARIO EN LAS VARIABLES CORRESPONDIENTES
 
     let nameRegistro = document.getElementById("nombreYApellido").value;
+    let dniregistro = document.getElementById("dni").value;
     let emailRegistro = document.getElementById("email").value;
     let cargoRegistro = document.getElementById("cargo").value;
     let passRegistro = document.getElementById("altaPassword").value;
     let pass2Registro = document.getElementById("altaPassword2").value;
-    let dniregistro = document.getElementById("dni").value;
+    
 
 
     // VALIDAMOS SI LAS CONTRASEÑAS COINCIDEN, EN CASO DE QUE NO, LE SALE UN MENSAJE AL USUARIO
@@ -33,8 +34,8 @@ registroUsuario.addEventListener("submit", (e) => {
 
             "nombreYApellido": nameRegistro,
             "dni": dniregistro,
-            "passwordSystem": passRegistro,
             "email": emailRegistro,
+            "passwordSystem": passRegistro,
             "cargo": cargoRegistro,
             // Nuevos Campos
             "tipo": "usuario",
