@@ -10,6 +10,7 @@ const formulario = document.getElementById("forms");
 
 const parrafo = document.getElementById("parrafo");
 
+
 formulario.addEventListener("submit", (e) => {
     e.preventDefault();
     let user = document.getElementById("username").value;
