@@ -4,8 +4,8 @@ import { obtenerBD, obtenerSiguienteCodigo } from "../base_de_datos/bd.js";
 
 
 // Obtener datos de Local Storage o inicializar vacío
-const datos = obtenerBD()
-cargarTabla(datos,"usuariosTable", "usuario");
-
+const usuariosBBDD = JSON.parse(localStorage.getItem("usuarios"));
+//const datos = obtenerBD()
+cargarTabla(usuariosBBDD,"usuariosTable", "usuario");
 
 console.log(datos);

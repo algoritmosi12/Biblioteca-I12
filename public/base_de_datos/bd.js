@@ -42,7 +42,7 @@
 
 
 
-
+/*
 
 
 
@@ -69,37 +69,6 @@ export function obtenerBD() {
                     "active": true
                 },
 
-                {
-
-                    "nombreYApellido": "Carlos Gómez",
-                    "dni": "122456",
-                    "email": "carlos.gomez@gmail.com",
-                    "cargo": "Admin",
-                    "passwordSystem": "pass1234",
-                    "active": true,
-                    "tipo": "usuario"
-                },
-
-                {
-
-                    "nombreYApellido": "Claudia Vera",
-                    "dni": "6728913",
-                    "email": "claudia.@gmail.com",
-                    "cargo": "Secretario",
-                    "passwordSystem": "12345",
-                    "active": true,
-                    "tipo": "usuario"
-                },
-
-                {
-                    "nombreYApellido": "Franco Silva",
-                    "dni": "135913",
-                    "email": "Silva01.@gmail.com",
-                    "cargo": "otro",
-                    "passwordSystem": "FS",
-                    "active": true,
-                    "tipo": "usuario"
-                },
                 // insumos
 
                 {
@@ -212,20 +181,5 @@ export function guardarArray(array) {
 export function obtenerSiguienteCodigo() {
     const codigo = Math.floor(Math.random() * 100000);
     return codigo;
-}
-
-///// RIEGEL - ROMAN - SONIA ///// 
-
-const usuario = [
-     {
-        codigo : 1, // autoincrement primary key // integer (12)
-        dni : 1000001, // string (8)
-        nombreYApellido : "admin", // string (50)
-        email : "admin@gmail.com", // string (40)
-        cargo : "admin", // string (15)
-        passwordSystem : "admin", // string (12)
-        active : "active" // string (4)
-     }
- ];
-
-
+};
+*/

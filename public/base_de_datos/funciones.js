@@ -6,10 +6,7 @@ function borrarLogico(posicion, datos) {
             datos[posicion].active = false;
             //actualizar la base de datos despues de borrar logico
             guardarArray(datos);
-}
-
-
-
+};
 
 // función para cargar tabla según tipo
 export function cargarTabla(datos,id_tabla, tipo) {
@@ -20,15 +17,12 @@ export function cargarTabla(datos,id_tabla, tipo) {
     
     
     //borra duplicados
-    table.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
-
-
+    //table.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
 
     //filtras los datos que sean activos y que sean igual a el tipo ( usuario o insumo)
     for (let posicion = 0; posicion < datos.length; posicion++) {
     //obtengo el registro de la base de datos segun la posición    
     let registro = datos[posicion];
-    
 
     // preparo la fila de los activos y del tipo correcto(usuario o insumo)
     if (registro.active === true && registro.tipo === tipo) {
@@ -66,3 +60,21 @@ export function cargarTabla(datos,id_tabla, tipo) {
 }
 
 }
+
+
+function crearTabla (idTabla,datos) {
+    //agarramos la tabla segun su id
+    const table = document.getElementById(idTabla);
+
+    for (let i = 0; i < datos.length; i++) {
+        const usuario = datos[i]; // guardo todos los datos segun tipo (usuario,insumo,prestamo)
+        const tr = document.createElement("tr");
+        for (let campo in registro) {
+            if (campo !== "codigo" && campo !== "password" && campo !== "active"){
+                const td = createdocument.createElement("td");
+                td.textContent = registro
+            }
+         }
+    }
+}
+
