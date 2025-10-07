@@ -46,6 +46,7 @@ const usuarios = [
         "destinatario" : "destinatario de prueba", // string (50)
         "fecha" : "01/10/2025", // date
         "fechaLimite" : "10/10/2025", // date
+        "active": true, // boolean (5)
     }
  ]
 // CONVERTIMOS EN STRING LOS ARRAY Y SE GUARDA EN LOCALSTORAGE

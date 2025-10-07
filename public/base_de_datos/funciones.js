@@ -1,10 +1,3 @@
-/*function borrarLogico(posicion, datos) {
-            // datos[0] = dame el dato del array en la posicion 0  
-            datos[posicion].active = false;
-            //actualizar la base de datos despues de borrar logico
-            guardarArray(datos);
-};*/
-
 export function crearTabla (idTabla,datos) {
     //agarramos la tabla segun su id
     const table = document.getElementById(idTabla);
@@ -13,13 +6,16 @@ export function crearTabla (idTabla,datos) {
         const tr = document.createElement("tr");
         
         for (let campo in usuario) {
+            // segun la tabla, vamos a ignorar los campos que no queremos que sean visibles
                 if (idTabla == "usuariosTable") {
+                    // en este caso no queremos mostrar los campos codigo, password y active
                     if (campo !== "codigo" && campo !== "password" && campo !== "active"){
                         const td = document.createElement("td");
                         td.textContent = usuario[campo];
                         tr.appendChild(td);
                     }
                 }
+                    // en este caso no queremos mostrar los campos codigo y active
                 else if (idTabla == "prestamosTabla") {
                     if (campo !== "active" && campo !== "codigo"){
                         const td = document.createElement("td");
@@ -28,6 +24,7 @@ export function crearTabla (idTabla,datos) {
                     }
                 }   
                 else if (idTabla == "insumosTabla")
+                    // en este caso no queremos mostrar el campo active
                     if (campo !== "active"){
                         const td = document.createElement("td");
                         td.textContent = usuario[campo];
@@ -42,9 +39,10 @@ export function crearTabla (idTabla,datos) {
             btn.id = usuario["codigo"]; //PRESTA ATENCION A ESTE BOTON
 
             btn.onclick = () => {
+                console.log (usuario["codigo"]);
                 //borrarLogico(posicion,datos)            
                 //actualizo la tabla
-                location.reload();
+                //location.reload();
             };
     
             //agrego el boton al td
@@ -56,7 +54,15 @@ export function crearTabla (idTabla,datos) {
         }
     }
 
+function borrarLogico(codigo, array) {
+            
+            
 
+            // datos[0] = dame el dato del array en la posicion 0  
+            //datos[posicion-1].active = false;
+            //actualizar la base de datos despues de borrar logico
+            //guardarArray(datos);
+};
 
 /*import { guardarArray } from "./bd.js";*/
 /*// función para cargar tabla según tipo
