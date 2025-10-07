@@ -13,47 +13,48 @@ export function crearTabla (idTabla,datos) {
         const tr = document.createElement("tr");
         
         for (let campo in usuario) {
-            switch (idTabla) {
-                case "usuariosTable" : 
+                if (idTabla == "usuariosTable") {
                     if (campo !== "codigo" && campo !== "password" && campo !== "active"){
                         const td = document.createElement("td");
                         td.textContent = usuario[campo];
                         tr.appendChild(td);
                     }
-                case "insumosTabla" : 
+                }
+                else if (idTabla == "prestamosTabla") {
+                    if (campo !== "active" && campo !== "codigo"){
+                        const td = document.createElement("td");
+                        td.textContent = usuario[campo];
+                        tr.appendChild(td);
+                    }
+                }   
+                else if (idTabla == "insumosTabla")
                     if (campo !== "active"){
                         const td = document.createElement("td");
                         td.textContent = usuario[campo];
                         tr.appendChild(td);
                     }
-                case "prestamosTabla" : 
-                    if (campo !== "codigo"){
-                        const td = document.createElement("td");
-                        td.textContent = usuario[campo];
-                        tr.appendChild(td);
-                    }
             }
-         }
-         // Botón borrar
-        const tdBorrar = document.createElement("td");
-        const btn = document.createElement("button");
-        btn.textContent = "Borrar";
-        btn.className = "btn btn-sm btn-danger";
+             // Botón borrar
+            const tdBorrar = document.createElement("td");
+            const btn = document.createElement("button");
+            btn.textContent = "Borrar";
+            btn.className = "btn btn-sm btn-danger";
+            btn.id = usuario["codigo"]; //PRESTA ATENCION A ESTE BOTON
 
-        btn.onclick = () => {
-            //borrarLogico(posicion,datos)            
-            //actualizo la tabla
-            location.reload();
-        };
+            btn.onclick = () => {
+                //borrarLogico(posicion,datos)            
+                //actualizo la tabla
+                location.reload();
+            };
     
-        //agrego el boton al td
-        tdBorrar.appendChild(btn);
-        //agrega el boton a la fila
-        tr.appendChild(tdBorrar);
-        //a la tabla de usuarios o insumos le agrego la fila
-        table.appendChild(tr);
+            //agrego el boton al td
+            tdBorrar.appendChild(btn);
+            //agrega el boton a la fila
+            tr.appendChild(tdBorrar);
+            //a la tabla de usuarios o insumos le agrego la fila
+            table.appendChild(tr);
+        }
     }
-}
 
 
 

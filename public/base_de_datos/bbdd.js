@@ -6,8 +6,8 @@ localStorage.clear();  // LIMPIAMOS EL LOCAL STORAGE ANTES DE EJECUTAR CUALQUIER
 const usuarios = [
     {
         codigo : 1, // autoincrement primary key // integer (12)
-        dni : "admin", // string (8)
         nombreYApellido : "admin", // string (50)
+        dni : "admin", // string (8)
         email : "admin@admin.com", // string (40)
         cargo : "admin", // string (15)
         password : "admin", // string (12)
@@ -15,11 +15,11 @@ const usuarios = [
     },
     {
         codigo : 2, // autoincrement primary key // integer (12)
-        dni : "admin2", // string (8)
-        nombreYApellido : "admin2", // string (50)
-        email : "admin2@admin.com", // string (40)
-        cargo : "admin2", // string (15)
-        password : "admin2", // string (12)
+        nombreYApellido : "adminss", // string (50)
+        dni : "adminss", // string (8)
+        email : "adminss@admin.com", // string (40)
+        cargo : "admin", // string (15)
+        password : "adminss", // string (12)
         active : true // string (4)
     },
  ];
@@ -42,7 +42,7 @@ const usuarios = [
     {
         "codigo" : 1, // autoincrement // primary key // integer (12)
         "insumo" : 1, // integer (12)
-        "cantidad" : 1, // integer (5)
+        "cantidad" : 10, // integer (5)
         "destinatario" : "destinatario de prueba", // string (50)
         "fecha" : "01/10/2025", // date
         "fechaLimite" : "10/10/2025", // date
