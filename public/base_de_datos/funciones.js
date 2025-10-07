@@ -1,14 +1,64 @@
-import { guardarArray } from "./bd.js";
-
-
-function borrarLogico(posicion, datos) {
+/*function borrarLogico(posicion, datos) {
             // datos[0] = dame el dato del array en la posicion 0  
             datos[posicion].active = false;
             //actualizar la base de datos despues de borrar logico
             guardarArray(datos);
-};
+};*/
 
-// función para cargar tabla según tipo
+export function crearTabla (idTabla,datos) {
+    //agarramos la tabla segun su id
+    const table = document.getElementById(idTabla);
+    for (let i = 0; i < datos.length; i++) {
+        const usuario = datos[i]; // guardo todos los datos segun tipo (usuario,insumo,prestamo)
+        const tr = document.createElement("tr");
+        
+        for (let campo in usuario) {
+            switch (idTabla) {
+                case "usuariosTable" : 
+                    if (campo !== "codigo" && campo !== "password" && campo !== "active"){
+                        const td = document.createElement("td");
+                        td.textContent = usuario[campo];
+                        tr.appendChild(td);
+                    }
+                case "insumosTabla" : 
+                    if (campo !== "active"){
+                        const td = document.createElement("td");
+                        td.textContent = usuario[campo];
+                        tr.appendChild(td);
+                    }
+                case "prestamosTabla" : 
+                    if (campo !== "codigo"){
+                        const td = document.createElement("td");
+                        td.textContent = usuario[campo];
+                        tr.appendChild(td);
+                    }
+            }
+         }
+         // Botón borrar
+        const tdBorrar = document.createElement("td");
+        const btn = document.createElement("button");
+        btn.textContent = "Borrar";
+        btn.className = "btn btn-sm btn-danger";
+
+        btn.onclick = () => {
+            //borrarLogico(posicion,datos)            
+            //actualizo la tabla
+            location.reload();
+        };
+    
+        //agrego el boton al td
+        tdBorrar.appendChild(btn);
+        //agrega el boton a la fila
+        tr.appendChild(tdBorrar);
+        //a la tabla de usuarios o insumos le agrego la fila
+        table.appendChild(tr);
+    }
+}
+
+
+
+/*import { guardarArray } from "./bd.js";*/
+/*// función para cargar tabla según tipo
 export function cargarTabla(datos,id_tabla, tipo) {
 
 
@@ -60,21 +110,4 @@ export function cargarTabla(datos,id_tabla, tipo) {
 }
 
 }
-
-
-function crearTabla (idTabla,datos) {
-    //agarramos la tabla segun su id
-    const table = document.getElementById(idTabla);
-
-    for (let i = 0; i < datos.length; i++) {
-        const usuario = datos[i]; // guardo todos los datos segun tipo (usuario,insumo,prestamo)
-        const tr = document.createElement("tr");
-        for (let campo in registro) {
-            if (campo !== "codigo" && campo !== "password" && campo !== "active"){
-                const td = createdocument.createElement("td");
-                td.textContent = registro
-            }
-         }
-    }
-}
-
+*/

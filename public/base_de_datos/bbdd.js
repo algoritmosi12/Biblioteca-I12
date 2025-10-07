@@ -13,6 +13,15 @@ const usuarios = [
         password : "admin", // string (12)
         active : true // string (4)
     },
+    {
+        codigo : 2, // autoincrement primary key // integer (12)
+        dni : "admin2", // string (8)
+        nombreYApellido : "admin2", // string (50)
+        email : "admin2@admin.com", // string (40)
+        cargo : "admin2", // string (15)
+        password : "admin2", // string (12)
+        active : true // string (4)
+    },
  ];
 // CREAMOS UN INSUMO DE PRUEBA
  const insumos = [
@@ -26,17 +35,16 @@ const usuarios = [
         "estado": "Nuevo", // string (20)
         "observacion": "Este insumo es un insumo de prueba", // string (50)
         "active": true, // boolean (5)
-        "tipo": "insumo" // string (12)
     },
  ]
 // CREAMOS UN PRESTAMO DE PRUEBA
  const prestamos = [
     {
         "codigo" : 1, // autoincrement // primary key // integer (12)
-        "fecha" : "01/10/2025", // date
         "insumo" : 1, // integer (12)
         "cantidad" : 1, // integer (5)
         "destinatario" : "destinatario de prueba", // string (50)
+        "fecha" : "01/10/2025", // date
         "fechaLimite" : "10/10/2025", // date
     }
  ]
