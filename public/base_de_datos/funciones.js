@@ -34,8 +34,8 @@ export function crearTabla (idTabla,datos) {
              // Botón borrar
             const tdBorrar = document.createElement("td");
             const btn = document.createElement("button");
-            btn.textContent = "Borrar";
-            btn.className = "btn btn-sm btn-danger";
+            btn.textContent = "";
+            btn.className = "btn btn-sm btn-danger bi-trash"; //esta clase bi-trash es para que salga el tachito :) 
             btn.id = usuario["codigo"]; //PRESTA ATENCION A ESTE BOTON
 
             btn.onclick = () => {
