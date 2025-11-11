@@ -4,22 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Gestión de Préstamos</title>
+
+    <!-- Bootstrap -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css"
     />
+    <link rel="stylesheet" href="../css/styles.css" />
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
       defer
     ></script>
-    <script src="prestamos.js" defer></script>
   </head>
+
   <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
       <div class="container-fluid">
         <a class="navbar-brand d-flex align-items-center" href="#">
@@ -29,60 +33,54 @@
             class="d-inline-block align-text-top me-2"
             style="height: 40px"
           />
-          Gestión de Insumos - Biblioteca ISFT Nº12 
+          Gestión de Insumos - Biblioteca ISFT Nº12
         </a>
         <button
           class="navbar-toggler"
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item">
-              <a class="nav-link" href="../home/home.html" id="linkInicio">Inicio</a>
+              <a class="nav-link" href="../home/home.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../insumos/insumos.html" id="linkInsumos"
-                >Insumos</a
-              >
+              <a class="nav-link" href="../insumos/insumos.html">Insumos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link active"
-                href="../prestamos/prestamos.html" id="linkPrestamos"
-                >Préstamos</a
-              >
+              <a class="nav-link active" href="../prestamos/prestamos.html">Préstamos</a>
             </li>
-
-            <li class="nav-item"><a class="nav-link" href="../usuarios/verUser.html" id="linkUsuarios">Usuarios</a>
-
-
             <li class="nav-item">
-              <a class="nav-link" href="#" id="linkSalir">Salir</a>
+              <a class="nav-link" href="../usuarios/verUser.html">Usuarios</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../index.html">Salir</a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
+    <!-- Contenido principal -->
     <div class="container mt-5">
       <div class="text-center mb-4">
-        <h2>
-            <img
-            src="../multimedia/logo i12 fondo blanco.png"
-            alt="Logo"
-            class="d-inline-block align-text-top me-2"
-            style="height: 40px" />
-            Gestión de Préstamos
+        <h2 class="fw-bold">
+          Gestión de Préstamos
         </h2>
       </div>
 
-      <ul class="nav nav-tabs mb-4" id="prestamosTabs" role="tablist">
+      <div class="row mb-3">
+      <div class="col-md-4 mb-3">
+        <input type="text" class="form-control" id="inputBuscar" name="buscar" placeholder="Buscar por nombre..." />
+      </div>
+
+      <!-- Tabs -->
+      <ul class="nav nav-tabs mb-3" id="prestamosTabs" role="tablist">
         <li class="nav-item" role="presentation">
           <button
             class="nav-link active"
@@ -91,8 +89,6 @@
             data-bs-target="#activos"
             type="button"
             role="tab"
-            aria-controls="activos"
-            aria-selected="true"
           >
             Activos
           </button>
@@ -105,8 +101,6 @@
             data-bs-target="#morosos"
             type="button"
             role="tab"
-            aria-controls="morosos"
-            aria-selected="false"
           >
             Morosos
           </button>
@@ -119,14 +113,13 @@
             data-bs-target="#historial"
             type="button"
             role="tab"
-            aria-controls="historial"
-            aria-selected="false"
           >
             Historial (Devueltos)
           </button>
         </li>
       </ul>
 
+      <!-- Contenido de Tabs -->
       <div class="tab-content" id="prestamosTabsContent">
         <div
           class="tab-pane fade show active"
@@ -134,21 +127,7 @@
           role="tabpanel"
           aria-labelledby="activos-tab"
         >
-          <div class="table-responsive">
-            <table id="prestamosTabla" class="table table-striped table-hover">
-              <thead class="table-light">
-                <tr>
-                  <th scope="col">Insumo</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Destinatario</th>
-                  <th scope="col">F. Préstamo</th>
-                  <th scope="col">F. Límite</th>
-                  <th scope="col">Acción</th>
-                </tr>
-              </thead>
-              <tbody id="listaActivos"></tbody>
-            </table>
-          </div>
+          <div class="table-responsive mt-3" id="prestamosActivos"></div>
         </div>
 
         <div
@@ -157,25 +136,7 @@
           role="tabpanel"
           aria-labelledby="morosos-tab"
         >
-          <div class="alert alert-warning" role="alert">
-            Listado de préstamos cuya Fecha Límite es anterior a la fecha
-            actual.
-          </div>
-          <div class="table-responsive">
-            <table class="table table-striped table-hover">
-              <thead class="table-warning">
-                <tr>
-                  <th scope="col">Insumo</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Destinatario</th>
-                  <th scope="col">F. Préstamo</th>
-                  <th scope="col">F. Límite</th>
-                  <th scope="col">Acción</th>
-                </tr>
-              </thead>
-              <tbody id="listaMorosos"></tbody>
-            </table>
-          </div>
+          <div class="table-responsive mt-3" id="prestamosMorosos"></div>
         </div>
 
         <div
@@ -184,29 +145,13 @@
           role="tabpanel"
           aria-labelledby="historial-tab"
         >
-          <div class="alert alert-info" role="alert">
-            Préstamos ya devueltos. Se puede eliminar del historial.
-          </div>
-          <div class="table-responsive">
-            <table class="table table-striped table-hover">
-              <thead class="table-info">
-                <tr>
-                  <th scope="col">Insumo</th>
-                  <th scope="col">Cantidad</th>
-                  <th scope="col">Destinatario</th>
-                  <th scope="col">F. Préstamo</th>
-                  <th scope="col">F. Devolución</th>
-                  <th scope="col">Observación</th>
-                  <th scope="col">Acciones</th>
-                  <th scope="col"></th>
-                </tr>
-              </thead>
-              <tbody id="listaHistorial"></tbody>
-            </table>
-          </div>
+          <div class="table-responsive mt-3" id="prestamosHistorial"></div>
         </div>
       </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../base_de_datos/prestamos.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   </body>
-  <script src="prestamos.js" type="module"></script>
 </html>

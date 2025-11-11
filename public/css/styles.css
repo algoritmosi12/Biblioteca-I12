@@ -49,9 +49,9 @@
   vertical-align: middle;
 }
 
-#insumosTabla tr:hover {
-  background-color: #fff4f4 !important;
-  transition: 0.3s;
+#insumosTabla tbody tr:hover td {
+  background-color: #e6e6e6 !important;
+  transition: background-color 0.3s;
 }
 
 .table-responsive {
@@ -62,19 +62,20 @@
 /*para la pantalla verUser*/
 
 /* Colores personalizados */
-.bg-rojo-suave {
-  background-color: #7388e5 !important;
-}
-
 .btn-rojo-suave {
-  background-color: #6c6cf1;
+  background-color: #d24c4c; /* Color principal del botón */
   color: #fff;
   border: none;
   transition: all 0.2s ease-in-out;
 }
 .btn-rojo-suave:hover {
-  background-color: #685de2;
+  background-color: #b13333; /* Color de hover */
   color: #fff;
+}
+
+/* NUEVA CLASE PARA FONDOS  */
+.bg-rojo-suave {
+  background-color: #efecec !important; /* Uso !important para asegurarme que sobrescribe Bootstrap :p */
 }
 
 /* Estilo tabla */
@@ -101,26 +102,60 @@
 }
 
 .table tbody tr:hover {
-  background-color: #fff2f2;
+  background-color: #bdb6b6 !important;
+  transition: background-color 0.2s ease-in-out;
 }
 
-/* 💎 Card contenedora */
+/* Card contenedora */
 .card {
   background-color: #ffffff;
-  border-radius: 16px;
+  min-height: 140px;           /* Altura mínima igual para todas */
+  display: flex;               /* Centra el contenido */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 12px;         /* Bordes más suaves */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Sombra leve */
 }
 
-/* 🧍 Acciones dentro de la tabla */
+.card h5 {
+  font-size: 0.95rem;
+  color: #6c757d;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.card h2 {
+  font-size: 2rem;
+  margin: 0;
+  color: #212529;
+}
+
+@media (max-width: 768px) {
+  .card {
+    min-height: 120px; /* Más compacto en pantallas chicas */
+  }
+}
+
+/* Acciones dentro de la tabla */
 .action-btn {
   border: none;
-  background: none;
-  color: #e57373;
+  background:#d44141 ;
+  color: #fbfbfb;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 .action-btn:hover {
-  color: #d32f2f;
+  background: #931f1f;
+  color: #ffffff;
 }
+
+/* btn de gestion de prestamo */
+.btn-moroso{
+  background-color: #d24c4c;
+  color: #ffffff; 
+}
+
 
 

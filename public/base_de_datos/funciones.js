@@ -1,120 +1,129 @@
-export function crearTabla (idTabla,datos) {
-    //agarramos la tabla segun su id
-    const table = document.getElementById(idTabla);
-    for (let i = 0; i < datos.length; i++) {
-        const usuario = datos[i]; // guardo todos los datos segun tipo (usuario,insumo,prestamo)
-        const tr = document.createElement("tr");
-        
-        for (let campo in usuario) {
-            // segun la tabla, vamos a ignorar los campos que no queremos que sean visibles
-                if (idTabla == "usuariosTable") {
-                    // en este caso no queremos mostrar los campos codigo, password y active
-                    if (campo !== "codigo" && campo !== "password" && campo !== "active"){
-                        const td = document.createElement("td");
-                        td.textContent = usuario[campo];
-                        tr.appendChild(td);
-                    }
-                }
-                    // en este caso no queremos mostrar los campos codigo y active
-                else if (idTabla == "prestamosTabla") {
-                    if (campo !== "active" && campo !== "codigo"){
-                        const td = document.createElement("td");
-                        td.textContent = usuario[campo];
-                        tr.appendChild(td);
-                    }
-                }   
-                else if (idTabla == "insumosTabla")
-                    // en este caso no queremos mostrar el campo active
-                    if (campo !== "active"){
-                        const td = document.createElement("td");
-                        td.textContent = usuario[campo];
-                        tr.appendChild(td);
-                    }
-            }
-             // Botón borrar
-            const tdBorrar = document.createElement("td");
-            const btn = document.createElement("button");
-            btn.textContent = "";
-            btn.className = "btn btn-sm btn-danger bi-trash"; //esta clase bi-trash es para que salga el tachito :) 
-            btn.id = usuario["codigo"]; //PRESTA ATENCION A ESTE BOTON
+// funciones.js
 
-            btn.onclick = () => {
-                console.log (usuario["codigo"]);
-                //borrarLogico(posicion,datos)            
-                //actualizo la tabla
-                //location.reload();
-            };
-    
-            //agrego el boton al td
-            tdBorrar.appendChild(btn);
-            //agrega el boton a la fila
-            tr.appendChild(tdBorrar);
-            //a la tabla de usuarios o insumos le agrego la fila
-            table.appendChild(tr);
-        }
+export function crearTablaGeneral(datos, columnas, opciones) {
+  const seleccionar = opciones && opciones.seleccionar;
+  const acciones = opciones && opciones.acciones;
+
+  const tabla = document.createElement("table");
+  tabla.className = "table table-hover align-middle";
+
+  const thead = document.createElement("thead");
+  const tbody = document.createElement("tbody");
+  const trHead = document.createElement("tr");
+
+  // Encabezado de "Seleccionar"
+  if (seleccionar) {
+    const th = document.createElement("th");
+    th.textContent = "Seleccionar";
+    trHead.appendChild(th);
+  }
+
+  // Encabezados de columnas
+  for (let i = 0; i < columnas.length; i++) {
+    const th = document.createElement("th");
+    th.textContent = columnas[i].texto;
+    trHead.appendChild(th);
+  }
+
+  // Encabezado de "Acciones"
+  if (acciones) {
+    const th = document.createElement("th");
+    th.textContent = "Acciones";
+    trHead.appendChild(th);
+  }
+
+  thead.appendChild(trHead);
+
+  // Filas de datos
+  for (let i = 0; i < datos.length; i++) {
+    const tr = document.createElement("tr");
+    const item = datos[i];
+
+    if (seleccionar) {
+      const td = document.createElement("td");
+      const check = document.createElement("input");
+      check.type = "checkbox";
+      td.appendChild(check);
+      tr.appendChild(td);
     }
 
-function borrarLogico(codigo, array) {
-            
-            
-
-            // datos[0] = dame el dato del array en la posicion 0  
-            //datos[posicion-1].active = false;
-            //actualizar la base de datos despues de borrar logico
-            //guardarArray(datos);
-};
-
-/*import { guardarArray } from "./bd.js";*/
-/*// función para cargar tabla según tipo
-export function cargarTabla(datos,id_tabla, tipo) {
-
-
-    //agarro del html la tabla que corresponde
-    const table = document.getElementById(id_tabla);
-    
-    
-    //borra duplicados
-    //table.querySelectorAll("tr:not(:first-child)").forEach(tr => tr.remove());
-
-    //filtras los datos que sean activos y que sean igual a el tipo ( usuario o insumo)
-    for (let posicion = 0; posicion < datos.length; posicion++) {
-    //obtengo el registro de la base de datos segun la posición    
-    let registro = datos[posicion];
-
-    // preparo la fila de los activos y del tipo correcto(usuario o insumo)
-    if (registro.active === true && registro.tipo === tipo) {
-        const tr = document.createElement("tr");
-
-        // recorro cada campo del registro
-        for (let campo in registro) {
-
-            if (campo !== "active" && campo !== "tipo" && campo !== "passwordSystem") {
-                const td = document.createElement("td");
-                td.textContent = registro[campo]
-                tr.appendChild(td);
-            }
-        }
-
-        // Botón borrar
-        const tdBorrar = document.createElement("td");
-        const btn = document.createElement("button");
-        btn.textContent = "Borrar";
-        btn.className = "btn btn-sm btn-danger";
-
-        btn.onclick = () => {
-            borrarLogico(posicion,datos)            
-            //actualizo la tabla
-            cargarTabla(datos,id_tabla, tipo);
-        };
-    
-        //agrego el boton al td
-        tdBorrar.appendChild(btn);
-        //agrega el boton a la fila
-        tr.appendChild(tdBorrar);
-        //a la tabla de usuarios o insumos le agrego la fila
-        table.appendChild(tr);
+    for (let j = 0; j < columnas.length; j++) {
+      const td = document.createElement("td");
+      const clave = columnas[j].clave;
+      td.textContent = item[clave] || "";
+      tr.appendChild(td);
     }
+
+    if (acciones) {
+      const td = document.createElement("td");
+      td.appendChild(acciones(item));
+      tr.appendChild(td);
+    }
+
+    tbody.appendChild(tr);
+  }
+
+  tabla.appendChild(thead);
+  tabla.appendChild(tbody);
+  return tabla;
 }
 
+// -----------------------------------------------------------------------
+
+export function buscarInsumo(insumos, valor) {
+  const texto = valor.trim().toLowerCase();
+  if (texto === "") {
+    return insumos;
+  }
+
+  const resultado = [];
+
+  for (let i = 0; i < insumos.length; i++) {
+    const insumo = insumos[i];
+    let nombre = "";
+    if (insumo.nombre) {
+      nombre = insumo.nombre.toLowerCase();
+    }
+
+    if (nombre.includes(texto)) {
+      resultado.push(insumo);
+    }
+  }
+
+  return resultado;
 }
-*/
+
+// -----------------------------------------------------------------------
+
+export function filtrarTabla(insumos, texto) {
+  const termino = texto.toLowerCase();
+  const filtrados = [];
+
+  for (let i = 0; i < insumos.length; i++) {
+    const insumo = insumos[i];
+
+    let nombre = "";
+    let categoria = "";
+    let estado = "";
+
+    if (insumo.nombre) {
+      nombre = insumo.nombre.toLowerCase();
+    }
+    if (insumo.categoria) {
+      categoria = insumo.categoria.toLowerCase();
+    }
+    if (insumo.estado) {
+      estado = insumo.estado.toLowerCase();
+    }
+
+    if (
+      nombre.includes(termino) ||
+      categoria.includes(termino) ||
+      estado.includes(termino)
+    ) {
+      filtrados.push(insumo);
+    }
+  }
+
+  return filtrados;
+}
