@@ -1,5 +1,5 @@
-import { obtenerUsuarios } from "./base_de_datos/bd.js";
-obtenerUsuarios();
+import { obtenerUsuarios } from "../bbdd/bd.js";
+
 
 const formulario = document.getElementById("forms");
 const parrafo = document.getElementById("parrafo");
@@ -9,7 +9,9 @@ formulario.addEventListener("submit", function (e) {
 
     let dni = document.getElementById("dni").value;
     let password = document.getElementById("password").value;
-    const usuariosBBDD = JSON.parse(localStorage.getItem("usuarios"));
+    const usuariosBBDD = obtenerUsuarios();
+
+    
 
     let encontrado = false;
 
@@ -26,7 +28,7 @@ formulario.addEventListener("submit", function (e) {
     }
 
     if (encontrado) {
-        window.location.href = "home/home.html";
+        window.location.href = "../paginas/home.html";
     } else {
         parrafo.textContent = "Usuario o contraseña incorrecta";
     }

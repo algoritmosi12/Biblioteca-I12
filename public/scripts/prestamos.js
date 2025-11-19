@@ -1,7 +1,7 @@
 // prestamos.js
 
-import { obtenerPrestamosPorEstado, actualizarEstadoPrestamo, marcarComoDevuelto } from "./bd.js";
-import { crearTablaGeneral, buscarInsumo } from "./funciones.js";
+import { obtenerPrestamosPorEstado, actualizarEstadoPrestamo, marcarComoDevuelto } from "../bbdd/bd.js";
+import { crearTablaGeneral, buscarInsumo } from "./funciones.js"
 
 // ELEMENTOS HTML (asegurate que los IDs existan en tu prestamos.html)
 const contenedorActivos = document.getElementById("prestamosActivos");
@@ -15,6 +15,7 @@ const columnas = [
   { clave: "insumo", texto: "Insumo" },
   { clave: "destinatario", texto: "Destinatario" },
   { clave: "fecha", texto: "Fecha" },
+  { clave: "observacion", texto: "Observacion" },
   { clave: "estado", texto: "Estado" },
 ];
 

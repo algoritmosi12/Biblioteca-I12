@@ -2,11 +2,8 @@
 
 // IMPORTS
 import {
-  obtenerInsumos,
-  guardarInsumo,
-  actualizarInsumo, 
-  eliminarInsumo
-} from "./bd.js";
+  obtenerInsumos, guardarInsumo, actualizarInsumo,  eliminarInsumo } from "../bbdd/bd.js";
+
 import { crearTablaGeneral, filtrarTabla, buscarInsumo } from "./funciones.js";
 
 import { alertaAdvertencia, alertaError, alertaExito } from "./alerts.js";
@@ -114,6 +111,8 @@ formRegistroInsumo.addEventListener("submit", (e) => {
   let insumosCreados = 0;
   for (let i = 0; i < cantidad; i++) {
       const nuevoInsumo = {
+          // El codigo correcto se asigna en el guardar insumo
+          codigo: -1, 
           nombre: nombre,
           // Se elimina categoria
           observacion: observacion,

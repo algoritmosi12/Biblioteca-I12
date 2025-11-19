@@ -1,6 +1,6 @@
 // usuarios.js - Maneja el listado y acciones de la tabla de usuarios
 
-import { obtenerUsuarios, eliminarUsuario } from "./bd.js";
+import { obtenerUsuarios, eliminarUsuario } from "../bbdd/bd.js";
 
 import { crearTablaGeneral } from "./funciones.js";
 

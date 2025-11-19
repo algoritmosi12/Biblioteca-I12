@@ -1,11 +1,9 @@
 // front.js
 
 // IMPORTS
-import {
-  obtenerInsumos,
-  guardarPrestamo,
-  actualizarInsumosPrestados
-} from "./bd.js"; 
+
+import { guardarPrestamo,actualizarInsumosPrestados,obtenerInsumos } from "../bbdd/bd.js";
+
 
 import { crearTablaGeneral, filtrarTabla, buscarInsumo  } from "./funciones.js";
 
@@ -19,6 +17,9 @@ const inputBuscar = document.getElementById("inputBuscar"); // Nuevo elemento
 const formPrestamo = document.getElementById("formPrestamo");
 const inputDestinatario = document.getElementById("inputDestinatario");
 const inputFecha = document.getElementById("inputFecha");
+const inputobservacion = document.getElementById ("Observacion_pres")
+
+
 const modalPrestamo = new bootstrap.Modal(document.getElementById('modalPrestamo')); // Instancia del modal de Bootstrap
 
 // VARIABLES
@@ -141,6 +142,7 @@ formPrestamo.addEventListener("submit", (e) => {
 
   const nombre = inputDestinatario.value.trim();
   const fecha = inputFecha.value;
+  const observacion = inputobservacion.value
 
   if (!nombre || !fecha) {
     alertaError('Campos incompletos','Completá todos los campos.')
@@ -161,6 +163,7 @@ for (let i = 0; i < insumosSeleccionados.length; i++) {
     insumo: insumo.nombre,
     destinatario: nombre,
     fecha: fecha, // Fecha del préstamo
+    observacion: observacion,
     estado: "activo"
   };
 

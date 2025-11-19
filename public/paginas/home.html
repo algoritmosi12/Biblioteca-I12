@@ -29,18 +29,18 @@
             <a class="nav-link" href="home.html" id="linkInicio">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../insumos/insumos.html" id="linkInsumos">Insumos</a>
+            <a class="nav-link" href="./insumos.html" id="linkInsumos">Insumos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../prestamos/prestamos.html" id="linkPrestamos">Préstamos</a>
-          </li>
-
-          <li class="nav-item">
-            <a class="nav-link" href="../usuarios/verUser.html" id="linkUsuarios">Usuarios</a>
+            <a class="nav-link" href="./prestamos.html" id="linkPrestamos">Préstamos</a>
           </li>
 
           <li class="nav-item">
-            <a class="nav-link" href="../index.html" id="linkUsuarios">salir</a>
+            <a class="nav-link" href="./verUser.html" id="linkUsuarios">Usuarios</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="../index/index.html" id="linkUsuarios">salir</a>
           </li>
         </ul>
       </div>
@@ -113,8 +113,15 @@
 
               <div class="mb-3">
                 <label for="inputFecha" class="form-label">Fecha del préstamo</label>
-                <input type="date" class="form-control" id="inputFecha" required />
+                <input type="date" class="form-control" id="inputFecha" required />              
               </div>
+              
+              <div>   <div class="col-12">
+             <label class="form-label fw-bold">Observación</label>
+             <textarea class="form-control" id="Observacion_pres" rows="3"></textarea>
+               </div>
+
+
 
               <button type="submit" class="btn btn-danger w-100">
                 Guardar préstamo
@@ -125,7 +132,7 @@
       </div>
     </div>
 
-  <script src="../base_de_datos/front.js" type="module"></script>
+  <script src="../scripts/front.js" type="module"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   

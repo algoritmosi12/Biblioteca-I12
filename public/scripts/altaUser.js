@@ -1,8 +1,8 @@
 // altaUser.js - Maneja la lógica del formulario de Alta de Usuario
-
 import { alertaExito, alertaError } from './alerts.js';
-import { obtenerUsuarios, guardarUsuario, obtenerSiguienteCodigo } from './bd.js';
-import { renderizarTablaUsuarios } from './usuarios.js'
+import {renderizarTablaUsuarios} from './usuarios.js'
+
+import  {obtenerUsuarios, guardarUsuario,CLAVE_USUARIOS, obtenerSiguienteCodigo } from '../bbdd/bd.js';
 
 // ELEMENTOS HTML
 const formAltaUsuario = document.getElementById("altaUsuarioForm");
@@ -71,7 +71,7 @@ formAltaUsuario.addEventListener("submit", (e) => {
 
   // Crear el nuevo usuario
   const nuevoUsuario = {
-    codigo: obtenerSiguienteCodigo(),
+    codigo: obtenerSiguienteCodigo(CLAVE_USUARIOS),
     dni: dni,
     nombreYApellido: nombreYApellido,
     email: email,
