@@ -28,24 +28,24 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav mx-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="home.html" id="linkInicio">Inicio</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./insumos.html" id="linkInsumos">Insumos</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="./prestamos.html" id="linkPrestamos">Préstamos</a>
-          </li>
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="home.html" id="linkInicio">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./insumos.html" id="linkInsumos">Insumos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./prestamos.html" id="linkPrestamos">Préstamos</a>
+                    </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="./verUser.html" id="linkUsuarios">Usuarios</a>
-          </li>
+                    <li class="nav-item">
+            <a class="nav-link" href="./usuarios.html" id="linkUsuarios">Usuarios</a>
+                    </li>
 
-          <li class="nav-item">
-            <a class="nav-link" href="../index/index.html" id="linkUsuarios">salir</a>
-          
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index/index.html" id="linkIndex">salir</a>
+
                     </li>
                 </ul>
             </div>
@@ -63,8 +63,7 @@
         <!-- Barra de búsqueda y botón -->
         <div class="row mb-3">
             <div class="col-md-5 mb-3">
-                <input type="text" class="form-control" id="inputBuscar"
-                    placeholder="Buscar insumo por nombre..." />
+                <input type="text" class="form-control" id="inputBuscar" placeholder="Buscar insumo por nombre..." />
             </div>
             <div class="col-md-7 text-md-end text-center">
                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#modalNuevoInsumo">
@@ -86,7 +85,7 @@
                     </tr>
                 </thead>
                 <tbody id="insumosTablaBody">
-                    
+
                 </tbody>
             </table>
         </div>
@@ -149,9 +148,8 @@
                             <div class="col-12">
                                 <label class="form-label fw-bold">Estado</label>
                                 <select class="form-select" id="editEstado" required>
-                                    <option value="">Seleccionar</option>
                                     <option value="Disponible">Disponible</option>
-                                    <option value="Prestado">Prestado</option>
+                                    <option value="No Disponible">No Disponible</option>
                                     <option value="En Reparación">En Reparación</option>
                                 </select>
                             </div>
@@ -160,7 +158,7 @@
                                 <textarea class="form-control" id="editObservacion" rows="3"></textarea>
                             </div>
                             <div class="mt-4 d-flex justify-content-center">
-                                <button type="submit" class="btn btn-danger me-2">
+                                <button type="submit" class="btn btn-danger me-2" id="submitEditar">
                                     Guardar cambios
                                 </button>
                             </div>

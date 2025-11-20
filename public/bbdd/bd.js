@@ -15,7 +15,7 @@ export function guardarArray(array, clave) {
 }
 
 export function obtenerArray(clave) {
-    
+
   const datos = JSON.parse(localStorage.getItem(clave));
   console.log(datos);
   return datos ? datos : [];
@@ -24,18 +24,18 @@ export function obtenerArray(clave) {
 // FUNCIÓN 1: CÓDIGO ALEATORIO (Para IDs de PRÉSTAMOS y Inicialización de Admin)
 export function obtenerCodigo() {
   // Genera un ID de transacción aleatorio y único (para la gestión del préstamo)
-  return Math.floor(Math.random() * 1000000); 
+  return Math.floor(Math.random() * 1000000);
 }
 
 
 // FUNCIÓN 2: CÓDIGO INCREMENTAL (Solo para Insumos, Usuarios y Destinatarios)
 export function obtenerSiguienteCodigo(clave) {
-    const elementos = obtenerArray(clave)
-    let maxCodigo = 0; // Inicializamos con 0
-    if (elementos.length > 0) {
-      maxCodigo =  elementos[elementos.length -1].codigo
-    }
-    return maxCodigo + 1;
+  const elementos = obtenerArray(clave)
+  let maxCodigo = 0; // Inicializamos con 0
+  if (elementos.length > 0) {
+    maxCodigo = elementos[elementos.length - 1].codigo
+  }
+  return maxCodigo + 1;
 }
 
 
@@ -66,6 +66,7 @@ export function guardarInsumo(nuevoInsumo) {
 }
 
 export function actualizarInsumo(insumoActualizado) {
+  console.log(insumoActualizado);
   let insumos = obtenerInsumos();
   let index = -1;
   let i = 0;
@@ -102,9 +103,14 @@ export function actualizarInsumo(insumoActualizado) {
 export function eliminarInsumo(codigo) {
   let insumos = obtenerInsumos();
   const insumosFiltrados = insumos.filter(i => i.codigo != codigo);
+  console.log(insumosFiltrados);
   guardarArray(insumosFiltrados, CLAVE_INSUMOS);
   return insumosFiltrados.length !== insumos.length;
 }
+
+
+
+
 
 
 
@@ -123,10 +129,10 @@ export function obtenerPrestamos() {
 
 export function guardarPrestamo(prestamo) {
   const prestamos = obtenerPrestamos();
-  
+
   // 1. Asigna el ID de la TRANSACCIÓN (el ID ÚNICO interno)
   prestamo.idTransaccion = obtenerCodigo(); // <-- Usa el código ALEATORIO para ID INTERNO
-  
+
   // 2. El campo prestamo.codigoInsumo YA CONTIENE el código del insumo físico
 
   prestamo.estado = prestamo.estado || "activo";
@@ -139,7 +145,7 @@ export function guardarPrestamo(prestamo) {
 export function actualizarEstadoPrestamo(idTransaccion, nuevoEstado) {
   const prestamos = obtenerPrestamos();
   // Busca por el ID de la transacción
-  const index = prestamos.findIndex(p => p.idTransaccion == idTransaccion); 
+  const index = prestamos.findIndex(p => p.idTransaccion == idTransaccion);
   if (index !== -1) {
     prestamos[index].estado = nuevoEstado;
     guardarArray(prestamos, CLAVE_PRESTAMOS);
@@ -153,14 +159,14 @@ export function marcarComoDevuelto(idTransaccion) {
   const prestamos = obtenerPrestamos();
   const insumos = obtenerInsumos();
   // Busca por el ID de la transacción
-  const prestamo = prestamos.find(p => p.idTransaccion == idTransaccion); 
+  const prestamo = prestamos.find(p => p.idTransaccion == idTransaccion);
   if (!prestamo) return false;
-  
+
   prestamo.estado = "devuelto";
-  
+
   // Usa el código del insumo guardado en el préstamo para liberarlo.
-  const insumo = insumos.find(i => i.codigo == prestamo.codigoInsumo); 
-  
+  const insumo = insumos.find(i => i.codigo == prestamo.codigoInsumo);
+
   if (insumo) insumo.estado = "Disponible";
   guardarArray(prestamos, CLAVE_PRESTAMOS);
   guardarArray(insumos, CLAVE_INSUMOS);

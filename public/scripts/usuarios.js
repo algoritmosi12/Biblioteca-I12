@@ -1,11 +1,17 @@
 // usuarios.js - Maneja el listado y acciones de la tabla de usuarios
 
-import { obtenerUsuarios, eliminarUsuario } from "../bbdd/bd.js";
+import { obtenerUsuarios, eliminarUsuario, actualizarUsuario } from "../bbdd/bd.js";
+import { alertaError, alertaExito } from "./alerts.js";
 
 import { crearTablaGeneral } from "./funciones.js";
 
 // ELEMENTOS HTML
-const usuariosTableBody = document.getElementById("usuariosTableBody");
+let usuariosTableBody = document.getElementById("usuariosTableBody");
+
+const botonConfirmarEdicion = document.getElementById("submitEditarUsuario")
+// Modal de Editar
+const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarUsuario'));
+
 
 const columnasUsuarios = [
     { clave: "nombreYApellido", texto: "Nombre y Apellido" },
@@ -25,43 +31,109 @@ function crearBotoneraAcciones(usuario) {
     btnEditar.innerHTML = '<i class="bi bi-pencil-square"></i>';
     btnEditar.title = 'Editar Usuario';
     btnEditar.addEventListener('click', () => abrirModalEditarUsuario(usuario));
-    
+
     // Botón Eliminar
     const btnEliminar = document.createElement('button');
     btnEliminar.className = 'btn btn-outline-danger';
     btnEliminar.innerHTML = '<i class="bi bi-trash"></i>';
     btnEliminar.title = 'Eliminar Usuario';
+
     btnEliminar.addEventListener('click', () => {
-        if (confirm(`¿Seguro que querés eliminar a ${usuario.nombreYApellido}?`)) {
-            eliminarUsuario(usuario.codigo)
-            renderizarTablaUsuarios();
+        if (String(usuario.cargo).toUpperCase() !== "ADMIN") {
+            if (confirm(`¿Seguro que querés eliminar a ${String(usuario.nombreYApellido).toUpperCase()}?`)) {
+                eliminarUsuario(Number(usuario.codigo))
+                renderizarTablaUsuarios();
+                alertaExito("Se elimino correctamente")
+            }
         }
-    });
+        else alertaError("No se puede eliminar admin");
+
+    })
 
     div.appendChild(btnEditar);
     div.appendChild(btnEliminar);
     return div;
 }
 
+
+
+function abrirModalEditarUsuario(usuario) {
+    document.getElementById('editCodigo').value = usuario.codigo;
+    document.getElementById('editNombreYApellido').value = usuario.nombreYApellido;
+    document.getElementById('editCargo').value = usuario.cargo;
+    document.getElementById('editEmail').value = usuario.email
+    document.getElementById('editPasswordSystem').value = usuario.passwordSystem
+
+
+    console.log(usuario);
+
+
+    if (String(usuario.cargo).toUpperCase() !== "ADMIN") {
+
+
+
+        modalEditar.show();
+
+        let usuarioActualizado = {}
+
+
+        botonConfirmarEdicion.addEventListener("click", (e) => {
+            e.preventDefault();
+
+            usuarioActualizado = {
+                codigo: document.getElementById('editCodigo').value,
+                nombreYApellido: document.getElementById('editNombreYApellido').value,
+                cargo: document.getElementById('editCargo').value,
+                email: document.getElementById('editEmail').value,
+                passwordSystem: document.getElementById('editPasswordSystem').value,
+            }
+
+
+            if (actualizarUsuario(usuarioActualizado)) {
+                renderizarTablaUsuarios()
+                modalEditar.hide();
+                alertaExito('Alta exitosa', `Se actualizo el usuario :" ${String(usuarioActualizado.nombreYApellido).toUpperCase()}" correctamente.`)
+            } else alertaError("No se pudo modificar")
+        })
+    }
+    else alertaError("No se puede modificar un usuario admin")
+}
+
+
+
 export function renderizarTablaUsuarios() {
     const usuarios = obtenerUsuarios();
-    
+
     if (usuarios.length > 0) {
-        
+
         const tablaCompleta = crearTablaGeneral(usuarios, columnasUsuarios, {
             acciones: crearBotoneraAcciones
         });
 
-        // crearTablaGeneral devuelve un TABLE, obtenemos su TBODY:
-        const newTbody = tablaCompleta.querySelector('tbody');
+        const newTbody = tablaCompleta.querySelector("tbody");
+        newTbody.id = "usuariosTableBody";
 
-        // Reemplazamos el contenido :)
-        usuariosTableBody.innerHTML = newTbody.innerHTML; 
+        usuariosTableBody.replaceWith(newTbody);
+
+        usuariosTableBody = newTbody;
+
     } else {
-        usuariosTableBody.innerHTML = `<tr><td colspan="${columnasUsuarios.length + 1}" class="text-center text-muted">No hay usuarios registrados.</td></tr>`;
+        // Si no hay usuarios, deja un mensaje en la tabla diciendo que no hay
+        const newTbody = document.createElement("tbody");
+        newTbody.id = "usuariosTableBody";
+        newTbody.innerHTML = `
+            <tr>
+                <td colspan="${columnasUsuarios.length + 1}" 
+                    class="text-center text-muted">
+                    No hay usuarios registrados.
+                </td>
+            </tr>
+        `;
+
+        usuariosTableBody.replaceWith(newTbody);
+        usuariosTableBody = newTbody;
     }
 }
-
 
 
 
