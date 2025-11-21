@@ -21,14 +21,23 @@ export function obtenerArray(clave) {
   return datos ? datos : [];
 }
 
-// FUNCIÓN 1: CÓDIGO ALEATORIO (Para IDs de PRÉSTAMOS y Inicialización de Admin)
+// CÓDIGO ALEATORIO (Para IDs de PRÉSTAMOS y Inicialización de Admin)
 export function obtenerCodigo() {
-  // Genera un ID de transacción aleatorio y único (para la gestión del préstamo)
-  return Math.floor(Math.random() * 1000000);
+  let ultimo = localStorage.getItem("ultimoCodigo");
+
+  // Si no existe nada guardado
+  if (ultimo === null) {
+    ultimo = 0;
+  } else {
+    ultimo = parseInt(ultimo);
+  }
+  const nuevo = ultimo + 1;
+  localStorage.setItem("ultimoCodigo", nuevo);
+  return nuevo;
 }
 
 
-// FUNCIÓN 2: CÓDIGO INCREMENTAL (Solo para Insumos, Usuarios y Destinatarios)
+// CÓDIGO INCREMENTAL (Solo para Insumos, Usuarios y Destinatarios)
 export function obtenerSiguienteCodigo(clave) {
   const elementos = obtenerArray(clave)
   let maxCodigo = 0; // Inicializamos con 0

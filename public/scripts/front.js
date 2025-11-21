@@ -5,7 +5,7 @@
 import { guardarPrestamo,actualizarInsumosPrestados,obtenerInsumos } from "../bbdd/bd.js";
 
 
-import { crearTablaGeneral, filtrarTabla, buscarInsumo  } from "./funciones.js";
+import { crearTablaGeneral, buscarInsumo  } from "./funciones.js";
 
 import { alertaAdvertencia, alertaError, alertaExito } from "./alerts.js";
 
@@ -13,11 +13,14 @@ import { alertaAdvertencia, alertaError, alertaExito } from "./alerts.js";
 const listaInsumos = document.getElementById("listaInsumos");
 const btnPrestamo = document.getElementById("btnNuevoPrestamo");
 const selectEstado = document.getElementById("selectEstado");
-const inputBuscar = document.getElementById("inputBuscar"); // Nuevo elemento
+const inputBuscar = document.getElementById("inputBuscar"); 
 const formPrestamo = document.getElementById("formPrestamo");
 const inputDestinatario = document.getElementById("inputDestinatario");
 const inputFecha = document.getElementById("inputFecha");
 const inputobservacion = document.getElementById ("Observacion_pres")
+const totalInsumos = document.getElementById("totalInsumos")
+const insumosPrestados = document.getElementById("insumosPrestados")
+const insumosReparacion = document.getElementById("insumosReparacion")
 
 
 const modalPrestamo = new bootstrap.Modal(document.getElementById('modalPrestamo')); // Instancia del modal de Bootstrap
@@ -63,6 +66,7 @@ function renderizarTabla() {
   let textoBusqueda = inputBuscar.value.trim();
 
   let insumosFiltrados = [];
+  let insumosFiltradosNoDispo = [];
 
   for (let i = 0; i < insumosActuales.length; i++) {
     let insumo = insumosActuales[i];
@@ -70,13 +74,19 @@ function renderizarTabla() {
     if (mostrarDisponibles && estado === "disponible") {
       insumosFiltrados.push(insumo);
     } else if (!mostrarDisponibles && estado !== "disponible") {
-      insumosFiltrados.push(insumo);
+      insumosFiltradosNoDispo.push(insumo);
     }
   }
 
+  let tabla;
   insumosFiltrados = buscarInsumo(insumosFiltrados, textoBusqueda);
 
-  let tabla = crearTablaGeneral(insumosFiltrados, columnasInsumos, { seleccionar: true });
+  if(insumosFiltrados.length > 0){
+    tabla = crearTablaGeneral(insumosFiltrados, columnasInsumos, { seleccionar: true });
+  }else{
+     tabla = crearTablaGeneral(insumosFiltradosNoDispo, columnasInsumos, { seleccionar: false });
+  }
+
   listaInsumos.appendChild(tabla);
 }
 
@@ -84,12 +94,7 @@ function renderizarTabla() {
 // ----- Funcionalidad para los cuadros informativos de inicio ----------
 
 function actualizarContadores() {
-  const insumos = obtenerInsumos() || [];
-
-  const totalInsumos = document.getElementById("totalInsumos")
-  const insumosPrestados = document.getElementById("insumosPrestados")
-  const insumosReparacion = document.getElementById("insumosReparacion")
-
+  const insumos = obtenerInsumos();
 
   let disponibles = 0;
   let prestados = 0;
@@ -102,7 +107,7 @@ for (let i = 0; i < insumos.length; i++) {
     disponibles++;
   } else if (estado === "prestado") {
     prestados++;
-  } else if (estado === "fuera de servicio") {
+  } else {
     enReparacion++;
   }
 }
@@ -143,11 +148,6 @@ formPrestamo.addEventListener("submit", (e) => {
   const nombre = inputDestinatario.value.trim();
   const fecha = inputFecha.value;
   const observacion = inputobservacion.value
-
-  if (!nombre || !fecha) {
-    alertaError('Campos incompletos','Completá todos los campos.')
-    return;
-  }
 
   // Verificar si hay insumos seleccionados (solo para seguridad, ya se chequeó al abrir el modal)
   if (insumosSeleccionados.length === 0) {

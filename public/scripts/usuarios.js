@@ -9,7 +9,11 @@ import { crearTablaGeneral } from "./funciones.js";
 let usuariosTableBody = document.getElementById("usuariosTableBody");
 
 const botonConfirmarEdicion = document.getElementById("submitEditarUsuario")
-// Modal de Editar
+const editCodigo = document.getElementById('editCodigo');
+const editNombreYApellido = document.getElementById('editNombreYApellido');
+const editCargo = document.getElementById('editCargo');
+const editEmail = document.getElementById('editEmail');
+const editPasswordSystem = document.getElementById('editPasswordSystem');
 const modalEditar = new bootstrap.Modal(document.getElementById('modalEditarUsuario'));
 
 
@@ -58,34 +62,28 @@ function crearBotoneraAcciones(usuario) {
 
 
 function abrirModalEditarUsuario(usuario) {
-    document.getElementById('editCodigo').value = usuario.codigo;
-    document.getElementById('editNombreYApellido').value = usuario.nombreYApellido;
-    document.getElementById('editCargo').value = usuario.cargo;
-    document.getElementById('editEmail').value = usuario.email
-    document.getElementById('editPasswordSystem').value = usuario.passwordSystem
-
-
-    console.log(usuario);
+    editCodigo.value = usuario.codigo;
+    editNombreYApellido.value = usuario.nombreYApellido;
+    editCargo.value = usuario.cargo;
+    editEmail.value = usuario.email;
+    editPasswordSystem.value = usuario.passwordSystem;
 
 
     if (String(usuario.cargo).toUpperCase() !== "ADMIN") {
-
-
 
         modalEditar.show();
 
         let usuarioActualizado = {}
 
-
         botonConfirmarEdicion.addEventListener("click", (e) => {
             e.preventDefault();
 
             usuarioActualizado = {
-                codigo: document.getElementById('editCodigo').value,
-                nombreYApellido: document.getElementById('editNombreYApellido').value,
-                cargo: document.getElementById('editCargo').value,
-                email: document.getElementById('editEmail').value,
-                passwordSystem: document.getElementById('editPasswordSystem').value,
+                codigo: editCodigo.value,
+                nombreYApellido: editNombreYApellido.value,
+                cargo: editCargo.value,
+                email: editEmail.value,
+                passwordSystem: editPasswordSystem.value
             }
 
 

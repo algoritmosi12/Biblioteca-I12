@@ -7,7 +7,7 @@ import {
 
 import { crearTablaGeneral, filtrarTabla, buscarInsumo } from "./funciones.js";
 
-import { alertaAdvertencia, alertaError, alertaExito } from "./alerts.js";
+import { alertaAdvertencia, alertaError, alertaExito, confirmarAccion } from "./alerts.js";
 
 // ELEMENTOS HTML
 // Se mantiene el mismo ID, asumiendo que el tbody ya tiene insumosTablaBody
@@ -17,7 +17,11 @@ const inputNombreAlta = document.getElementById("nombre");
 const inputCantidadAlta = document.getElementById("cantidad"); // Importante: se mantiene para leer la cantidad de unidades
 const textareaObservacionAlta = document.getElementById("observacion");
 const inputBuscar = document.getElementById("inputBuscar");
-const botonConfirmarEdicion = document.getElementById("submitEditar")
+const botonConfirmarEdicion = document.getElementById("submitEditar");
+const editCodigo = document.getElementById('editCodigo');
+const editNombre = document.getElementById('editNombre');
+const editEstado = document.getElementById('editEstado');
+const editObservacion = document.getElementById('editObservacion');
 
 // Modal de Alta
 const modalNuevoInsumo = new bootstrap.Modal(document.getElementById('modalNuevoInsumo'));
@@ -52,15 +56,21 @@ function crearBotoneraAcciones(insumo) {
   btnEliminar.title = 'Eliminar';
   console.log("botton" + btnEliminar);
 
-  btnEliminar.addEventListener('click', () => {
-    if (insumo.estado !== "Prestado") {
-      if (confirm(`¿Seguro que querés eliminar el insumo : ${String(insumo.nombre).toUpperCase()} de codigo : (${insumo.codigo})?`)) {
-        eliminarInsumo(Number(insumo.codigo));
-        alertaExito("Se elimino correctamente")
-        renderizarTablaInsumos();
-      }
-    } else alertaError("No se puede eliminar un insumo prestado")
-  });
+btnEliminar.addEventListener("click", async () => {
+  if (insumo.estado !== "Prestado") {
+    const ok = await confirmarAccion(
+      "¿Seguro que querés eliminar?",
+      `Insumo: ${String(insumo.nombre).toUpperCase()} (código: ${insumo.codigo})`
+    );
+    if (ok) {
+      eliminarInsumo(parseInt(insumo.codigo));
+      alertaExito("Se eliminó correctamente");
+      renderizarTablaInsumos();
+    }
+  } else {
+    alertaError("No se puede eliminar un insumo prestado");
+  }
+});
 
   div.appendChild(btnEditar);
   div.appendChild(btnEliminar);
@@ -110,11 +120,11 @@ function renderizarTablaInsumos() {
 
 
 function abrirModalEditarInsumo(insumo) {
-  // Implementar lógica para llenar el modal de edición
-  document.getElementById('editCodigo').value = insumo.codigo;
-  document.getElementById('editNombre').value = insumo.nombre;
-  document.getElementById('editEstado').value = insumo.estado;
-  document.getElementById('editObservacion').value = insumo.observacion || '';
+  
+  editCodigo.value = insumo.codigo;
+  editNombre.value = insumo.nombre;
+  editEstado.value = insumo.estado;
+  editObservacion.value = insumo.observacion || '';
 
 
 
@@ -130,10 +140,10 @@ function abrirModalEditarInsumo(insumo) {
       console.log(321321321);
 
       insumoActualizado = {
-        codigo: document.getElementById('editCodigo').value,
-        nombre: document.getElementById('editNombre').value,
-        estado: document.getElementById('editEstado').value,
-        observacion: document.getElementById('editObservacion').value,
+        codigo: editCodigo.value,
+        nombre: editNombre.value,
+        estado: editEstado.value,
+        observacion: editObservacion.value,
       }
 
 
