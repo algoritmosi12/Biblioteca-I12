@@ -2,15 +2,31 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/bilbioteca-i12/public/index/index.html"
+      "dest": "/public/index/index.html"
     },
     {
-      "src": "/(css|multimedia|scripts|bbdd|paginas)/(.*)",
-      "dest": "/public/$1/$2"
+      "src": "/css/(.*)",
+      "dest": "/public/css/$1"
+    },
+    {
+      "src": "/multimedia/(.*)", 
+      "dest": "/public/multimedia/$1"
+    },
+    {
+      "src": "/scripts/(.*)",
+      "dest": "/public/scripts/$1"
+    },
+    {
+      "src": "/bbdd/(.*)",
+      "dest": "/public/bbdd/$1"
+    },
+    {
+      "src": "/paginas/(.*)",
+      "dest": "/public/paginas/$1"
     },
     {
       "src": "/(.*)",
-      "dest": "/public/index/$1"
+      "status": 404
     }
   ]
 }
