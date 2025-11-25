@@ -1,0 +1,16 @@
+{
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/public/index/index.html"
+    },
+    {
+      "src": "/(css|multimedia|scripts|bbdd|paginas)/(.*)",
+      "dest": "/public/$1/$2"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/index/$1"
+    }
+  ]
+}
