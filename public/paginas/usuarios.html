@@ -106,7 +106,7 @@
             <input type="hidden" id="editCodigo" />
             <div class="col-12">
               <label for="editNombre" class="form-label fw-bold">Nombre Y Apellido</label>
-              <input type="text" class="form-control" id="editNombreYApellido" required />
+              <input type="text" class="form-control" id="editNombreYApellido" maxlength="30" required />
             </div>
             <div class="col-12">
               <label class="form-label fw-bold">Cargo</label>
@@ -156,7 +156,7 @@
               <div class="col-md-6">
                 <label for="nombreYApellido" class="form-label fw-semibold">Apellido y Nombre</label>
                 <input type="text" class="form-control border-secondary-subtle" id="nombreYApellido"
-                  placeholder="Ej: García Sofía" required />
+                  placeholder="Ej: García Sofía" maxlength="30" required />
               </div>
 
               <div class="col-md-6">
@@ -186,14 +186,7 @@
                 <input type="password" class="form-control border-secondary-subtle" id="altaPassword"
                   placeholder="Contraseña" required />
               </div>
-              <!--
-              <div class="col-md-6">
-                <label for="altaPassword2" class="form-label fw-semibold">Repetir Contraseña</label>
-                <input type="password" class="form-control border-secondary-subtle" id="altaPassword2"
-                  placeholder="Repetir contraseña" required />
-              </div>
-            </div>
-            -->
+              
               <div class="text-center mt-4">
                 <button type="submit" class="btn btn-rojo-suave px-5 py-2 rounded-pill shadow-sm">
                   <i class="bi bi-person-plus"></i> Crear Usuario

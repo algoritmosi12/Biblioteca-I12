@@ -10,7 +10,7 @@ const contenedorHistorial = document.getElementById("prestamosHistorial");
 const inputBuscar = document.getElementById("inputBuscar");
 
 const columnas = [
-  // ... tus columnas ...
+  // columnas 
   { clave: "codigoInsumo", texto: "Código de Insumo" }, 
   { clave: "insumo", texto: "Insumo" },
   { clave: "destinatario", texto: "Destinatario" },

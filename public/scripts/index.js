@@ -28,7 +28,7 @@ formulario.addEventListener("submit", function (e) {
     }
 
     if (encontrado) {
-        window.location.href = "../paginas/home.html";
+        window.location.href = "paginas/home.html";
     } else {
         parrafo.textContent = "Usuario o contraseña incorrecta";
     }

@@ -108,15 +108,15 @@
                         <form class="row g-3" id="registroInsumo">
                             <div class="col-12">
                                 <label for="nombre" class="form-label fw-bold">Nombre</label>
-                                <input type="text" class="form-control" id="nombre" required />
+                                <input type="text" class="form-control" id="nombre" maxlength="20" required />
                             </div>
                             <div class="col-12">
                                 <label for="cantidad" class="form-label fw-bold">Cantidad de unidades</label>
-                                <input type="number" class="form-control" id="cantidad" value="1" min="1" required />
+                                <input type="number" class="form-control" id="cantidad" value="1" min="1" max="50" required />
                             </div>
                             <div class="col-12">
                                 <label for="observacion" class="form-label fw-bold">Observación</label>
-                                <textarea class="form-control" id="observacion" rows="3"></textarea>
+                                <textarea class="form-control" id="observacion" rows="3" maxlength="30"></textarea>
                             </div>
                             <div class="col-12 text-center mt-4">
                                 <button type="submit" class="btn btn-danger">
@@ -145,19 +145,19 @@
                             <input type="hidden" id="editCodigo" />
                             <div class="col-12">
                                 <label for="editNombre" class="form-label fw-bold">Nombre</label>
-                                <input type="text" class="form-control" id="editNombre" required />
+                                <input type="text" class="form-control" id="editNombre" maxlength="20" required />
                             </div>
                             <div class="col-12">
                                 <label class="form-label fw-bold">Estado</label>
                                 <select class="form-select" id="editEstado" required>
                                     <option value="Disponible">Disponible</option>
                                     <option value="No Disponible">No Disponible</option>
-                                    <option value="En Reparación">En Reparación</option>
+                                    <!--<option value="En Reparación">En Reparación</option>-->
                                 </select>
                             </div>
                             <div class="col-12">
                                 <label class="form-label fw-bold">Observación</label>
-                                <textarea class="form-control" id="editObservacion" rows="3"></textarea>
+                                <textarea class="form-control" id="editObservacion" rows="3" maxlength="30"></textarea>
                             </div>
                             <div class="mt-4 d-flex justify-content-center">
                                 <button type="submit" class="btn btn-danger me-2" id="submitEditar">
