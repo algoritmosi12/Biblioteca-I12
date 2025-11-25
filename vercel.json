@@ -2,7 +2,7 @@
   "routes": [
     {
       "src": "/",
-      "dest": "/public/index/index.html"
+      "dest": "/bilbioteca-i12/public/index/index.html"
     },
     {
       "src": "/(css|multimedia|scripts|bbdd|paginas)/(.*)",
