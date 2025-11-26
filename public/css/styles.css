@@ -54,9 +54,20 @@
   transition: background-color 0.3s;
 }
 
+#listaInsumos {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#listaInsumos table {
+  white-space: nowrap;
+}
+
+
 .table-responsive {
+  overflow-x: auto !important;
+  overflow-y: hidden !important;
   border-radius: 10px;
-  overflow: hidden;
 }
 
 /*para la pantalla verUser*/
