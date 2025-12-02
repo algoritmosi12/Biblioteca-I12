@@ -43,16 +43,27 @@ function crearBotoneraAcciones(usuario) {
     btnEliminar.title = 'Eliminar Usuario';
 
     btnEliminar.addEventListener('click', () => {
-        if (String(usuario.cargo).toUpperCase() !== "ADMIN") {
-            if (confirm(`¿Seguro que querés eliminar a ${String(usuario.nombreYApellido).toUpperCase()}?`)) {
-                eliminarUsuario(Number(usuario.codigo))
-                renderizarTablaUsuarios();
-                alertaExito("Se elimino correctamente")
-            }
-        }
-        else alertaError("No se puede eliminar admin");
+    if (String(usuario.cargo).toUpperCase() !== "ADMIN") {
 
-    })
+        Swal.fire({
+            title: '¿Estás seguro?',
+            text: `¿Seguro que querés eliminar a ${String(usuario.nombreYApellido).toUpperCase()}?`,
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sí, eliminar',
+            cancelButtonText: 'Cancelar'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                eliminarUsuario(Number(usuario.codigo));
+                renderizarTablaUsuarios();
+                alertaExito("Se eliminó correctamente");
+            }
+        });
+
+    } else {
+        alertaError("No se puede eliminar admin");
+    }
+});
 
     div.appendChild(btnEditar);
     div.appendChild(btnEliminar);
